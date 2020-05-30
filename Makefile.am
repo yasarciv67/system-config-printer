@@ -296,17 +296,6 @@ EXTRA_DIST=\
 	test_PhysicalDevice.py \
 	$(appdata_in_files)
 
-# The man pages are generated from DocBook XML.
-.stamp-man-pages-built: $(top_srcdir)/man/system-config-printer.xml
-	xmlto man -o man $<
-	touch .stamp-man-pages-built
-
-$(man_MANS): .stamp-man-pages-built
-
-html:	$(EXPORT_MODULES) $(EXPORT_MODULES_GEN)
-	rm -rf html
-	epydoc -o html --html $(EXPORT_MODULES)
-
 distcheck-hook: update-po missing-imports
 
 # Generate Zanata locales list from ALL_LINGUAS
